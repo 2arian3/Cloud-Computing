@@ -1,0 +1,128 @@
+html {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    font-family: "Zilla Slab", serif;
+}
+
+body {
+    background: url("../static/assets/bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+div.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+div.main {
+    background-color: #fefefe;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 400px;
+    border-radius: 50px;
+    padding: 30px;
+}
+
+div.top {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+    width: 100%;
+    align-self: center;
+}
+
+div.down {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    margin-top: 10px;
+    height: 10%;
+    width: 80%;
+    align-self: center;
+    padding: 10px;
+
+}
+
+.note {
+    background: #ffffa0;
+    border-radius: 10px;
+    border: black thin solid;
+    cursor: text;
+    width: 100%;
+    height: 100%;
+}
+
+.create_note {
+    background-color: #7bf041;
+    height: 90%;
+    width: 50%;
+    align-self: center;
+    border: none;
+    border-radius: 10px;
+}
+
+.create_note:hover {
+    background-color: #77c900;
+    cursor: pointer;
+}
+
+
+.link {
+    display: none;
+    background: #ffffa0;
+    border-radius: 10px;
+    border: black thin solid;
+    cursor: text;
+    width: 100%;
+    height: 100%;
+
+}
+
+.link_ready {
+    display: none;
+    align-self: center;
+}
+
+
+.create_note_yes {
+    display: none;
+    background-color: #7bf041;
+    height: 30%;
+    width: 50%;
+    align-self: center;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.create_note_yes:hover {
+    background-color: #77c900;
+    cursor: pointer;
+}
+
+.create_note_no {
+    display: none;
+    background-color: #f44336;
+    height: 30%;
+    width: 50%;
+    align-self: center;
+    border: none;
+    border-radius: 10px;
+}
+
+.create_note_no:hover {
+    background-color: #c0392b;
+    cursor: pointer;
+}
