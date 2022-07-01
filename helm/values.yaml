@@ -1,0 +1,6 @@
+privateNote:
+  expiration: "1000"
+
+replicaCount: 2
+service:
+  port: "8080"

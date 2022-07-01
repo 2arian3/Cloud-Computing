@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-config
+data:
+  production-config.json: |
+    {
+      "host": "0.0.0.0",
+      "port": "8080",
+      "expiration": {{ .Values.privateNote.expiration }},
+      "db_host": {{ .Release.Name }}-redis-service,
+      "db_port": "6379",
+      "db_name": "0",
+      "db_password": "thisisasecretpassword"
+    }

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-redis-service
+  labels:
+    app: redis
+    role: db
+    tier: backend
+spec:
+  selector:
+    app: {{ .Release.Name }}-redis
+    role: db
+    tier: backend
+  ports:
+    - name: redis-port
+      port: 6379
+      targetPort: 6379
+      protocol: TCP

@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .Release.Name }}-redis
+  labels:
+    app: redis
+    role: db
+    tier: backend
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 32Mi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/{{ .Release.Name }}-redis
+    type: Directory
+
+

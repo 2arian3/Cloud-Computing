@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-redis
+  labels:
+    app: {{ .Release.Name }}-redis
+    role: db
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-redis
+      role: db
+      tier: backend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-redis
+        role: db
+        tier: backend
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.0.2-alpine
+          ports:
+            - containerPort: 6379
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-redis-secret
+                  key: db_password
+          command: [ "redis-server" ]
+          args: [ "--requirepass", $(REDIS_PASSWORD) ]
+          volumeMounts:
+            - name: redis-pv
+              mountPath: /data
+      volumes:
+        - name: redis-pv
+          persistentVolumeClaim:
+            claimName: {{ .Release.Name }}-redis-pvc

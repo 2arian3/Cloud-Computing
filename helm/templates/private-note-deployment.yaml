@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-private-note
+  labels:
+    app: {{ .Release.Name }}-private-note
+  creationTimestamp: null
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-private-note
+  strategy: { }
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-private-note
+      creationTimestamp: null
+    spec:
+      containers:
+        - name: {{ .Release.Name }}-private-note
+          image: arianboukani/private-note
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 100m
+          volumeMounts:
+            - mountPath: /app/config.json
+              subPath: production-config.json
+              name: config-map
+      volumes:
+        - name: config-map
+          configMap:
+            name: {{ .Release.Name }}-config
