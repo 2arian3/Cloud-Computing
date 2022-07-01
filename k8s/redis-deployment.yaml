@@ -4,23 +4,17 @@ metadata:
   name: redis
   labels:
     app: redis
-    role: db
-    tier: backend
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: redis
-      role: db
-      tier: backend
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
         app: redis
-        role: db
-        tier: backend
     spec:
       containers:
         - name: redis

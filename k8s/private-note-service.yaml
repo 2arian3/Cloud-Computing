@@ -2,15 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: private-note-service
-  labels:
-    app: private-note
-    role: server
-    tier: backend
 spec:
   selector:
     app: private-note
-    role: server
-    tier: backend
   ports:
     - name: private-note-port
       port: 80
