@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    container_name: private-note
+    ports:
+      - 8080:8080
+
+  redis:
+    image: redis:7.0.2-alpine
+    command: redis-server --requirepass thisisasecretpassword
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:

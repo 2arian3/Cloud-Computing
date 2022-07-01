@@ -1,6 +1,3 @@
-import config from './config.js'
-const port = config.port
-
 const create_button = document.querySelector('.create_note');
 
 create_button.addEventListener('click', function () {
@@ -14,7 +11,7 @@ create_button.addEventListener('click', function () {
     document.querySelector('.top').style.flexDirection = 'column';
     document.querySelector('.top').style.height = '80%';
 
-    fetch(`http://localhost:${port}/create`, {
+    fetch(`${window.location.href}/create`, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -23,7 +20,6 @@ create_button.addEventListener('click', function () {
     }).then(res => {
         return res.json();
     }).then(data => {
-        console.log(data['note_address']);
-        document.querySelector('.link').value = data['note_address'];
+        document.querySelector('.link').value = window.location.href + data['note_address'];
     });
 });

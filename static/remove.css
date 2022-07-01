@@ -54,9 +54,10 @@ div.top {
     height: 30%;
     width: 50%;
     align-self: center;
+    color: white;
     border: none;
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 .create_note_yes:hover {
@@ -68,9 +69,11 @@ div.top {
     background-color: #f44336;
     height: 30%;
     width: 50%;
+    color: white;
     align-self: center;
     border: none;
     border-radius: 10px;
+    margin: 10px;
 }
 
 .create_note_no:hover {
@@ -79,6 +82,7 @@ div.top {
 }
 
 .note {
+    padding: 5px;
     display: none;
     background: #ffffa0;
     border-radius: 10px;
@@ -86,4 +90,13 @@ div.top {
     cursor: text;
     width: 100%;
     height: 100%;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
 }

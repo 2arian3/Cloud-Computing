@@ -1,2 +1,4 @@
 venv
 .idea
+dump.rdb
+__pycache__/

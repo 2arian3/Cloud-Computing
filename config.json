@@ -1,0 +1,9 @@
+{
+  "host": "0.0.0.0",
+  "port": "8080",
+  "expiration": "1000",
+  "db_host": "redis",
+  "db_port": "6379",
+  "db_name": "0",
+  "db_password": "thisisasecretpassword"
+}

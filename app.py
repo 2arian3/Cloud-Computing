@@ -1,24 +1,19 @@
 import string
 import random
 import flask
-from flask_cors import CORS
 import redis
 import json
 
 
 def get_config():
-    with open('./static/config.js', 'r') as f:
-        config = f.read()
-        config = config.replace('const config = ', '')
-        config = config.replace('export default config;', '')
-        config = config.replace(';', '')
-        config = json.loads(config)
-        return config
+    with open('./config.json', 'r') as f:
+        return json.load(f)
 
 
+config = get_config()
 app = flask.Flask(__name__)
-CORS(app)
-redis_db = redis.Redis(host=get_config()['database'], password=get_config()['db_password'], db=get_config()['db_name'])
+redis_db = redis.Redis(host=config['db_host'], port=config['db_port'],
+                       password=config['db_password'], db=config['db_name'])
 
 
 @app.route('/', methods=['GET'])
@@ -48,4 +43,4 @@ def remove(note_address):
     return flask.jsonify({})
 
 
-app.run(host='localhost', port=get_config()['port'])
+app.run(host=config['host'], port=config['port'])

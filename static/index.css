@@ -56,6 +56,7 @@ div.down {
 }
 
 .note {
+    padding: 5px;
     background: #ffffa0;
     border-radius: 10px;
     border: black thin solid;
@@ -68,6 +69,7 @@ div.down {
     background-color: #7bf041;
     height: 90%;
     width: 50%;
+    color: white;
     align-self: center;
     border: none;
     border-radius: 10px;
@@ -81,6 +83,7 @@ div.down {
 
 .link {
     display: none;
+    text-align: center;
     background: #ffffa0;
     border-radius: 10px;
     border: black thin solid;
@@ -95,9 +98,16 @@ div.down {
     align-self: center;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 
 .create_note_yes {
     display: none;
+    color: white;
     background-color: #7bf041;
     height: 30%;
     width: 50%;
@@ -114,6 +124,7 @@ div.down {
 
 .create_note_no {
     display: none;
+    color: white;
     background-color: #f44336;
     height: 30%;
     width: 50%;
