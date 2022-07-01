@@ -25,13 +25,13 @@ spec:
     spec:
       containers:
         - name: private-note
-          image: private-note:latest # this should be changed
+          image: arianboukani/private-note
           ports:
-            - containerPort: 80
+            - containerPort: 8080
               protocol: TCP
           resources:
             limits:
-              cpu: 100m # 100 millicores
+              cpu: 100m
           env:
             - name: REDIS_PASSWORD
               valueFrom:
@@ -40,7 +40,8 @@ spec:
                   key: db_password
           volumeMounts:
             - name: redis-pv
-              mountPath: /data/redis
+              mountPath: /data
+              readOnly: true
       volumes:
         - name: config-map
           configMap:

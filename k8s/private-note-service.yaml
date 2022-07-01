@@ -15,4 +15,4 @@ spec:
     - name: private-note-port
       port: 80
       protocol: TCP
-      targetPort: 80
+      targetPort: 8080

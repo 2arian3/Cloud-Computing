@@ -8,8 +8,6 @@ metadata:
     tier: backend
 spec:
   storageClassName: manual
-  capacity:
-    storage: 32Mi
   accessModes:
     - ReadWriteOnce
   resources:

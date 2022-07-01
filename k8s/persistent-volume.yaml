@@ -13,7 +13,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: /data/redis
+    path: /data
     type: Directory
 
 

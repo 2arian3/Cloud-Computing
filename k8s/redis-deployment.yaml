@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: redis
-          image: redis:7-alpine
+          image: redis:7.0.2-alpine
           ports:
             - containerPort: 6379
           env:
@@ -33,9 +33,11 @@ spec:
                 secretKeyRef:
                   name: redis-secret
                   key: db_password
+          command: [ "redis-server" ]
+          args: [ "--requirepass", $(REDIS_PASSWORD) ]
           volumeMounts:
             - name: redis-pv
-              mountPath: /data/redis
+              mountPath: /data
       volumes:
         - name: redis-pv
           persistentVolumeClaim:
