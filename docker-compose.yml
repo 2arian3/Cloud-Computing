@@ -3,11 +3,13 @@ services:
   app:
     build: .
     container_name: private-note
+    image: arianboukani/private-note
     ports:
       - 8080:8080
 
   redis:
     image: redis:7.0.2-alpine
+    container_name: redis
     command: redis-server --requirepass thisisasecretpassword
     volumes:
       - redis-data:/data
