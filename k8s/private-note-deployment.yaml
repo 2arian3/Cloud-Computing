@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: private-note-deployment
+  labels:
+    app: private-note
+    role: server
+    tier: backend
+  creationTimestamp: null
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+    app: private-note
+    role: server
+    tier: backend
+  strategy: { }
+  template:
+    metadata:
+      labels:
+        app: private-note
+        role: server
+        tier: backend
+      creationTimestamp: null
+    spec:
+      containers:
+        - name: private-note
+          image: private-note:latest # this should be changed
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 100m # 100 millicores
+          env:
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-secret
+                  key: db_password
+          volumeMounts:
+            - name: redis-pv
+              mountPath: /data/redis
+      volumes:
+        - name: config-map
+          configMap:
+            name: private-note-config
