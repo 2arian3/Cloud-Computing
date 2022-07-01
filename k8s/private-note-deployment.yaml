@@ -4,23 +4,17 @@ metadata:
   name: private-note-deployment
   labels:
     app: private-note
-    role: server
-    tier: backend
   creationTimestamp: null
 spec:
   replicas: 2
   selector:
     matchLabels:
-    app: private-note
-    role: server
-    tier: backend
+      app: private-note
   strategy: { }
   template:
     metadata:
       labels:
         app: private-note
-        role: server
-        tier: backend
       creationTimestamp: null
     spec:
       containers:
@@ -32,16 +26,10 @@ spec:
           resources:
             limits:
               cpu: 100m
-          env:
-            - name: REDIS_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: redis-secret
-                  key: db_password
           volumeMounts:
-            - name: redis-pv
-              mountPath: /data
-              readOnly: true
+            - mountPath: /app/config.json
+              subPath: production-config.json
+              name: config-map
       volumes:
         - name: config-map
           configMap:
