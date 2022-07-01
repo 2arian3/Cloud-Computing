@@ -1,5 +1,5 @@
 # Phase 1
-server development
+Developed the server using Flask.
 
 # Phase 2
-write a Dockerfile
+Run the following command to start the container ```docker-compose up -d```
